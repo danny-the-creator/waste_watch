@@ -1,0 +1,270 @@
+@import "@fortawesome/fontawesome-free/css/all";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html, body {
+		@apply overflow-hidden;
+	}
+}
+
+@layer components {
+	/* FORM */
+	.field {
+		@apply bg-field;
+		@apply outline-none;
+		@apply pt-8;
+		@apply px-4;
+		@apply pb-2;
+		@apply rounded-xl;
+	}
+	
+	.fieldlabel {
+		@apply font-semibold;
+		@apply translate-y-7;
+		@apply px-4;
+	}
+
+	.checkbox {
+		@apply inline-block;
+		@apply relative;
+		@apply cursor-pointer;
+		@apply select-none;
+		@apply flex;
+		@apply items-center;
+		@apply gap-2;
+	}
+
+	.checkbox > input {
+		@apply absolute;
+		@apply opacity-0;
+		@apply cursor-pointer;
+		@apply h-0;
+		@apply w-0;
+	}
+
+	.checkbox > span {
+		@apply w-5;
+		@apply h-5;
+		@apply border-2;
+		@apply rounded;
+		@apply flex;
+		@apply justify-center;
+		@apply items-center;
+		@apply text-white;
+		@apply text-sm;
+		@apply bg-field;
+
+		@apply transition-colors;
+		@apply ease-in-out;
+		@apply duration-300;
+	}
+	.checkbox > input:checked ~ span {
+		@apply bg-primary-dark;
+		@apply border-primary-darker;
+	}
+	.checkbox > span > i {
+		@apply opacity-0;
+		@apply transition-opacity;
+		@apply ease-in-out;
+		@apply duration-300;
+	}
+	.checkbox > input:checked ~ span > i {
+		@apply opacity-100;
+	}
+
+	.checkbox > input:focus ~ span {
+		@apply border-primary-darker/30;
+	}
+
+	.checkbox:hover > span {
+		@apply bg-primary-dark/30;
+		@apply border-primary-darker/10;
+	}
+
+	.checkbox:hover > span > i {
+		@apply opacity-50;
+	}
+
+	.checkbox > p {
+		@apply inline;
+		@apply tracking-wide;
+		@apply font-button;
+	}
+
+	.accept-button {
+		@apply w-full;
+		@apply bg-primary-base;
+		@apply py-4;
+		@apply rounded-lg;
+		@apply text-white;
+		@apply font-button;
+		@apply tracking-wide;
+		@apply text-xl;
+
+		@apply hover:bg-primary-dark;
+		@apply hover:active:bg-primary-darker;
+	}
+	.danger-button {
+		@apply w-full;
+		@apply bg-danger-base;
+		@apply py-4;
+		@apply rounded-lg;
+		@apply text-white;
+		@apply font-button;
+		@apply tracking-wide;
+		@apply text-xl;
+
+		@apply hover:bg-danger-dark;
+		@apply hover:active:bg-danger-darker;
+	}
+
+
+	form.segmented-tabs {
+		@apply flex;
+		@apply relative;
+		@apply overflow-hidden;
+		@apply transition-all;
+		@apply duration-300;
+		@apply ease-in-out;
+		@apply bg-primary-base;
+		@apply border-primary-base;
+		@apply border-2;
+		@apply rounded;
+		@apply text-sm;
+		@apply font-button;
+		@apply tracking-wider;
+
+		@apply text-white;
+	}
+
+	form.segmented-tabs input {
+		@apply !absolute;
+		@apply h-1;
+		@apply w-1;
+		@apply overflow-hidden;
+		@apply whitespace-nowrap;
+		clip: rect(1px, 1px, 1px, 1px);
+		@apply opacity-0;
+	}
+
+	form.segmented-tabs input:checked + label {
+		@apply text-primary-base;
+	}
+
+	form.segmented-tabs label {
+		@apply flex;
+		@apply justify-center;
+		@apply items-center;
+		@apply text-center;
+		@apply cursor-pointer;
+		@apply flex-1;
+		@apply relative;
+		@apply transition-all;
+		@apply duration-300;
+		@apply ease-in-out;
+		@apply z-20;
+
+		@apply last-of-type:z-10;
+
+		@apply last-of-type:after:rounded-md;
+		@apply last-of-type:after:absolute;
+		@apply last-of-type:after:top-0;
+		@apply last-of-type:after:right-0;
+		@apply last-of-type:after:bottom-0;
+		@apply last-of-type:after:left-0;
+		@apply last-of-type:after:-z-20;
+		@apply last-of-type:after:bg-white;
+		@apply last-of-type:after:transition-all;
+		@apply last-of-type:after:duration-300;
+		@apply last-of-type:after:ease-in-out;
+		@apply last-of-type:after:translate-x-full;
+	}
+
+	form.segmented-tabs input:nth-last-of-type(1):checked ~ label:last-of-type::after {
+		transform: translateX(0);
+	}
+	form.segmented-tabs input:nth-last-of-type(2):checked ~ label:last-of-type::after {
+		transform: translateX(-100%);
+	}
+	form.segmented-tabs input:nth-last-of-type(3):checked ~ label:last-of-type::after {
+		transform: translateX(-200%);
+	}
+
+
+
+	/* PAGE */
+
+	.header {
+		@apply font-title;
+		@apply text-4xl;
+		@apply tracking-wide;
+		@apply text-title;
+	}
+
+	.action-button {
+		@apply font-button;
+		@apply rounded;
+		@apply pr-3;
+		@apply pl-1;
+		@apply py-1;
+		@apply cursor-pointer;
+		
+		@apply flex;
+		@apply items-center;
+		@apply justify-center;
+
+		@apply bg-primary-base;
+		@apply text-white;
+
+		@apply transition; 
+		@apply ease-in-out;
+		@apply duration-200;
+		@apply hover:bg-primary-dark;
+		@apply hover:active:bg-primary-darker;
+		@apply select-none;
+	}
+
+	.action-button > i.fas {
+		@apply w-4;
+		@apply h-4;
+		@apply mx-2;
+	}
+
+	.search {
+		@apply font-button;
+		@apply px-2;
+		@apply py-2;
+		
+		@apply flex;
+		@apply items-center;
+		@apply gap-3;
+
+		@apply *:outline-none;
+		@apply border-b-2;
+		@apply border-primary-darker;
+	}
+
+	.table {
+		@apply w-full;
+	}
+
+	.table tr {
+		@apply h-16;
+		@apply *:h-16;
+		@apply border;
+		@apply border-table-line;
+
+		@apply *:text-left;
+		@apply first:*:pl-5;
+	}
+
+	.table th {
+		@apply bg-table-bg;
+		@apply uppercase;
+		@apply font-normal;
+		@apply tracking-wider;
+	}
+}
